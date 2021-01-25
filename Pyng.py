@@ -53,7 +53,7 @@ lowerBar.goto(-465,-190)
 lowerBar.down()
 lowerBar.goto(465,-190)
 
-
+player = Turtle()
 player.penup()
 player.hideturtle()
 player.goto(-450,0)
