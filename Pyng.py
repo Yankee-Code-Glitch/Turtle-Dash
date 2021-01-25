@@ -39,13 +39,14 @@ startwindow()
 barProperties()
 playerProperties()
 
+topBar = Turtle()
 topBar.up()
 topBar.hideturtle()
 topBar.goto(460,190)
 topBar.down()
 topBar.goto(-465,190)
 
-
+lowerBar = Turtle()
 lowerBar.up()
 lowerBar.hideturtle()
 lowerBar.goto(-465,-190)
