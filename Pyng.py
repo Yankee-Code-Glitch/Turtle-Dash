@@ -1,14 +1,6 @@
 from turtle import *
 import random
-
-class asteroids:
-    def asteroid(self):
-        self = Turtle()
-        self.speed(5)
-        self.shape("circle")
-        self.shapesize(3)
-        self.color("#7c7c7c")
-        
+import time
 
 def moveup():
     player.left(90)
@@ -73,8 +65,34 @@ lowerBar.goto(-465,-190)
 lowerBar.down()
 lowerBar.goto(465,-190)
 
-Position = int(random.randint(-180,180))
-Example = asteroids.asteroid("goTo")
-asteroid.goto(500,Position)
+
+
+asteroids = []
+
+while True:
+    Position = int(random.randint(-180,180))
+    i = 0
+    asteroid = Turtle()
+    asteroid.hideturtle()
+    asteroid.penup()
+    asteroid.goto(450,Position)
+    asteroid.left(180)
+    asteroid.speed(2)
+    asteroid.shape("circle")
+    asteroid.shapesize(3)
+    asteroid.color("#7c7c7c")
+    asteroid.showturtle()
+
+
+
+    asteroids.append(asteroid)
+
+    for rock in asteroids:
+        rock.forward(80)
+
+
+Example = asteroids.asteroid("ejemplo",Position)
+Example.forward(10)
 print(Position)
+
 mainloop()
