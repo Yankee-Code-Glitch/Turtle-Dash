@@ -1,6 +1,5 @@
 from turtle import *
 import random
-import time
 
 def moveup():
     if player.ycor() + 15 <= 185:
