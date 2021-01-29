@@ -3,13 +3,16 @@ import random
 import time
 
 def moveup():
-    player.left(90)
-    player.forward(15)
-    player.right(90)
+    if player.ycor() + 15 <= 185:
+        player.left(90)
+        player.forward(15)
+        player.right(90)
+        
 def movedown():
-    player.right(90)
-    player.forward(15)
-    player.left(90)
+    if player.ycor() - 15 >= -185:
+        player.right(90)
+        player.forward(15)
+        player.left(90)
 
 def startwindow():
     global Window
@@ -68,31 +71,41 @@ lowerBar.goto(465,-190)
 
 
 asteroids = []
-
-while True:
+i = 5
+Bolean = True
+while Bolean:
     Position = int(random.randint(-180,180))
-    i = 0
-    asteroid = Turtle()
-    asteroid.hideturtle()
-    asteroid.penup()
-    asteroid.goto(450,Position)
-    asteroid.left(180)
-    asteroid.speed(2)
-    asteroid.shape("circle")
-    asteroid.shapesize(3)
-    asteroid.color("#7c7c7c")
-    asteroid.showturtle()
 
+    if i%5 == 0:
+        asteroid = Turtle()
+        asteroid.hideturtle()
+        asteroid.penup()
+        asteroid.goto(450,Position)
+        asteroid.left(180)
+        asteroid.speed(20)
+        asteroid.shape("circle")
+        asteroid.shapesize(3)
+        asteroid.color("#7c7c7c")
+        asteroid.showturtle()
+    i = random.randint(0,10)
 
 
     asteroids.append(asteroid)
 
     for rock in asteroids:
-        rock.forward(80)
-
-
-Example = asteroids.asteroid("ejemplo",Position)
-Example.forward(10)
-print(Position)
+        if rock.distance(player)<20:
+            gameOvermessage = Turtle()
+            gameOvermessage.speed(0)
+            gameOvermessage.shape("square")
+            gameOvermessage.color("white")
+            gameOvermessage.penup()
+            gameOvermessage.hideturtle()
+            gameOvermessage.goto(0,0)
+            gameOvermessage.write("Game Over", align="center", font=("courier","50","normal"))
+            player.hideturtle()
+            Bolean = False
+            for rock in asteroids:
+                rock.hideturtle()
+        rock.forward(random.randint(10,200))
 
 mainloop()
